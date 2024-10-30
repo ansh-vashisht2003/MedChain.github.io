@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="javax.servlet.http.HttpSession" %>
 <%
     String message = "";
     String username = request.getParameter("username");
@@ -14,14 +15,18 @@
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Medicine", "root", "password");
             
-            // Check credentials in supplying_chemist table
+            // Check credentials in delivery_person table
             ps = con.prepareStatement("SELECT * FROM delivery_person WHERE username = ? AND password = ?");
             ps.setString(1, username);
-            ps.setString(2, password);
+            ps.setString(2, password); // Remember to implement password hashing
             rs = ps.executeQuery();
             
             if (rs.next()) {
-                // Successful login, redirect to dashboard
+                // Successful login, get the name and store it in session
+                String name = rs.getString("name"); // Retrieve the user's name
+                HttpSession session1 = request.getSession();
+                session1.setAttribute("username", username);
+                session1.setAttribute("name", name); // Store the name in the session
                 response.sendRedirect("dashboard.jsp");
             } else {
                 message = "Invalid username or password. Please try again.";
