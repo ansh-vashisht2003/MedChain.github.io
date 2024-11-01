@@ -110,7 +110,7 @@ if (name == null) {
                 <li><a href="#home">Home</a></li>
                 <li><a href="order.jsp">Order Now</a></li>
                 <li><a href="past.jsp">Past Orders</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="contact.jsp">Profile</a></li>
             </ul>
         </nav>
     </header>
@@ -156,3 +156,4 @@ if (name == null) {
     </footer>
 </body>
 </html>
+
