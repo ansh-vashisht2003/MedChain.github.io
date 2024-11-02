@@ -1,6 +1,5 @@
 <%@ page import="java.sql.*" %>
 <%
-
 HttpSession session1 = request.getSession(false);
 String name = (session1 != null) ? (String) session.getAttribute("name") : null;
 
@@ -15,144 +14,181 @@ if (name == null) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sending Medicine Dashboard</title>
+    <title>Sending Chemist Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: Arial, sans-serif;
-            background-color: #E8F0F2; /* Light cyan background */
-            color: #2C3E50; /* Dark gray text color */
+            font-family: 'Roboto', sans-serif;
+            background: #F0F4F8; /* Light, calming background */
+            color: #333;
+            margin: 0;
         }
 
         header {
-            position: relative;
+            background: linear-gradient(90deg, #2D6A4F, #52B788); /* Green gradient */
+            padding: 15px;
+            color: #FFF;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         nav {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #34495E; /* Dark blue-gray for navbar */
-            padding: 10px 20px;
-        }
-
-        .logo {
-            color: #F4D03F; /* Gold logo color */
-            font-size: 24px;
-            font-weight: bold;
+            justify-content: space-around;
+            background: #74C69D;
+            padding: 10px 0;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
+            gap: 20px;
         }
 
         .nav-links li {
-            margin: 0 15px;
+            display: inline;
         }
 
         .nav-links a {
-            color: #F4F6F6; /* Light white text */
+            color: #FFF;
             text-decoration: none;
-            transition: color 0.3s;
+            font-weight: 500;
+            padding: 8px 15px;
+            background: #2D6A4F;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.2s;
         }
 
         .nav-links a:hover {
-            color: #85C1E9; /* Light blue hover effect */
+            background: #52B788;
+            transform: scale(1.05);
         }
 
         main {
             padding: 20px;
-            max-width: 800px;
+            max-width: 1100px;
             margin: auto;
         }
 
         section {
             margin: 20px 0;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            background: #FFF;
+            border-radius: 12px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #52B788;
         }
 
         footer {
+            background: #2D6A4F;
+            color: #FFF;
             text-align: center;
-            padding: 10px 0;
-            background: #34495E;
-            color: #F4F6F6;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            padding: 15px 0;
+            margin-top: 20px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
         }
 
         h1, h2 {
             color: #2C3E50; /* Consistent heading color */
         }
 
-        .section-image img {
-            width: 100%;
-            height: auto;
+        ul {
+            list-style: circle;
+            margin-left: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #52B788;
+            font-weight: bold;
+        }
+
+        a {
+            color: #2D6A4F;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #52B788;
+            color: #FFF;
+            text-transform: uppercase;
+            font-weight: bold;
             border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .cta-button:hover {
+            background: #2D6A4F;
+            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">Sending Dashboard</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="order.jsp">Requests</a></li>
-                <li><a href="past.jsp">Orders</a></li>
-                <li><a href="contact.jsp">Profile</a></li>
-            </ul>
-        </nav>
+        <h1>Welcome to the Platform, <%= name %>!</h1>
     </header>
     
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#overview">Overview</a></li>
+        <%--     <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>   --%> 
+            <li><a href="order.jsp">Order Requests</a></li>
+            <li><a href="supplyHistory.jsp">Supply History</a></li>
+            <li><a href="profile.jsp">Profile</a></li>
+           
+        </ul>
+    </nav>
+
     <main>
-       <section id="home">
-    <h1>Welcome, <%= name %>!</h1>
-    <p>We are here to make your pharmacy operations smoother and more efficient. Easily request essential medicines, keep track of your inventory needs, and get reliable assistance whenever you need it. Access the latest in pharmaceutical supplies with just a few clicks!</p>
-</section>
+        <section id="overview">
+            <h2>Dashboard Overview</h2>
+            <p>Stay informed about the current status of your orders and track all ongoing requests. Utilize this dashboard to efficiently manage your supply commitments and view key insights on recent requests and delivery statuses.</p>
+            <a href="order.jsp" class="cta-button">View New Requests</a>
+        </section>
 
-<section id="about">
-    <h2>About Us</h2>
-    <p>Our mission is to streamline medicine procurement for chemists by ensuring fast, secure, and tailored access to essential drugs and supplies. Partnered with leading pharmaceutical distributors, we aim to support your commitment to community health by delivering medicines when you need them. Whether you are managing high demand, emergency stockouts, or seasonal shortages, we are here to keep your shelves full and your patients satisfied.</p>
-    <p>With our user-friendly platform, inventory tracking, and quick delivery services, you can focus on what matters most is providing quality care.</p>
-</section>
+        <section id="services">
+            <h2>Our Services</h2>
+            <p>We provide a range of services to support chemists, including:</p>
+            <ul>
+                <li>Real-time order tracking and management.</li>
+                <li>Comprehensive supply history and records.</li>
+                <li>Inventory updates and reminders for low stock.</li>
+                <li>Detailed analytics for better decision-making.</li>
+            </ul>
+            <p>Our platform ensures streamlined communication between chemists and suppliers for a seamless experience.</p>
+        </section>
 
-<section id="services">
-    <h2>Order Services</h2>
-    <p>As a registered chemist, you have exclusive access to our range of order management services designed to simplify the ordering process:</p>
-    <ul>
-        <li><strong>Easy Order Placement:</strong> Quickly search for and order medicines from our extensive catalog. Place single or bulk orders at your convenience.</li>
-        <li><strong>Real-Time Order Tracking:</strong> Stay updated on your orders from dispatch to delivery. Access tracking details anytime to ensure you are prepared for incoming shipments.</li>
-        <li><strong>Order History:</strong> View your past orders, allowing for easy reordering of high-demand items and better inventory planning.</li>
-        <li><strong>24/7 Support Access:</strong> Our support team is available around the clock to answer questions, provide order updates, and assist with any issues that may arise.</li>
-    </ul>
-</section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, concerns, or feedback, feel free to reach out:</p>
+            <p>Email: <a href="mailto:support@medchain.com">support@medchain.com</a></p>
+            <p>Phone: +1 (800) 555-0199</p>
+            <p>Address: 123 MedChain Street, Pharma City, PC 12345</p>
+            <p>We look forward to assisting you with your inquiries!</p>
+        </section>
 
-<section id="contact">
-    <h2>Contact Information</h2>
-    <p>If you need assistance, our dedicated support team is here to help! Reach out to us through the following channels:</p>
-    <ul>
-        <li><strong>Email:</strong> <a href="mailto:support@medchain.in">support@medchain.in</a> Contact us for any account, order, or technical inquiries.</li>
-        <li><strong>Phone:</strong> +91 3464328750 — Available during business hours for urgent assistance.</li>
-        <li><strong>Live Chat:</strong> Access our online chat support for quick answers and guidance during your order process.</li>
-        <li><strong>Address:</strong> NMAMIT, Nitte ,Karkata, India 1406003</li>
-    </ul>
-</section>
-
+        <section id="updates">
+            <h2>Latest Updates</h2>
+            <p class="highlight">New order requests and supply notifications will appear here as they are received. Keep an eye out for urgent updates!</p>
+            <p>Review your current inventory and make timely dispatches to ensure prompt delivery to requesting chemists.</p>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 MedChain Delivery. All rights reserved.</p>
+        <p>&copy; 2024 MedChain Network. Empowering better pharmacy services.</p>
     </footer>
 </body>
 </html>
+
