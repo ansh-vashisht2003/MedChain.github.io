@@ -24,13 +24,13 @@
             
             if (rs.next()) {
                 // Store user details in session
-                HttpSession session1 = request.getSession();
-                session1.setAttribute("id", rs.getInt("id"));
-                session1.setAttribute("name", rs.getString("name"));
-                session1.setAttribute("username", rs.getString("username"));
-                session1.setAttribute("password", rs.getString("password"));
-                session1.setAttribute("phone_number", rs.getString("phone_number"));
-                session1.setAttribute("email", rs.getString("email"));
+                HttpSession session11 = request.getSession();
+                session11.setAttribute("id", rs.getInt("id"));
+                session11.setAttribute("name", rs.getString("name"));
+                session11.setAttribute("username", rs.getString("username"));
+                session11.setAttribute("password", rs.getString("password"));
+                session11.setAttribute("phone_number", rs.getString("phone_number"));
+                session11.setAttribute("email", rs.getString("email"));
                 
                 // Redirect to dashboard
                 response.sendRedirect("dashboard.jsp");
@@ -119,3 +119,4 @@
     <p>Don't have an account? <a href="signup.jsp">Sign up here</a></p>
 </body>
 </html>
+
