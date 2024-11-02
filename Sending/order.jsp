@@ -1,73 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Terms and Conditions - Medicine Donation</title>
+<title>Terms and Conditions - Medicine Sale</title>
 <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         color: #333;
-        background-color: #f5f5f5;
+        background-color: #d4edda; /* Light green background */
         padding: 40px;
         margin: 0;
     }
 
     h1 {
-        color: #2F4F4F;
-        font-size: 32px;
+        color: #2e7d32; /* Dark green */
+        font-size: 36px;
         font-weight: bold;
         text-align: center;
+        margin-bottom: 20px;
     }
 
     h2 {
-        color: #4682B4;
+        color: #388e3c; /* Medium green */
         font-size: 28px;
-        margin-top: 30px;
+        margin-top: 20px;
         margin-bottom: 15px;
         text-align: center;
     }
 
     .container {
-        max-width: 800px;
+        max-width: 900px;
         margin: auto;
-        background-color: #fff;
-        border-radius: 8px;
+        background-color: #ffffff; /* White background */
+        border-radius: 15px;
         padding: 30px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 4px 15px rgba(50, 205, 50, 0.3); /* Green shadow */
+        margin-bottom: 30px;
     }
 
     .button {
-        background-color: #4CAF50;
+        background-color: #4caf50; /* Green button */
         color: white;
         padding: 12px 30px;
         font-size: 16px;
-        margin-top: 10px;
-        border-radius: 4px;
+        border-radius: 8px;
         border: none;
         cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    .button-blue {
-        background-color: #007BFF;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        display: inline-block;
     }
 
     .button:hover {
-        background-color: #388E3C;
-    }
-
-    .button-blue:hover {
-        background-color: #0056b3;
-    }
-
-    .button-green {
-        background-color: #4CAF50;
-        margin-left: 10px;
+        background-color: #388e3c; /* Darker green */
+        transform: scale(1.05);
     }
 
     .terms-section {
         padding: 20px;
         line-height: 1.6;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 20px;
+        border-radius: 8px;
     }
 
     .terms-section:last-of-type {
@@ -75,7 +67,7 @@
     }
 
     .terms-section p {
-        color: #666;
+        color: #444;
         font-size: 16px;
     }
 
@@ -91,64 +83,68 @@
 
     marquee {
         font-weight: bold;
-        color: #ff4500;
+        color: #d32f2f; /* Red for importance */
         font-size: 18px;
+        background-color: #f1f1f1;
+        padding: 5px;
+        border-radius: 8px;
     }
 </style>
 </head>
 <body>
     <div class="container">
-        <h1>MedShare</h1>
-        <marquee>IMPORTANT: Please read the terms and eligibility criteria carefully before donating</marquee>
+        <h1>MedShare Platform</h1>
+        <marquee>IMPORTANT: Please read the terms and conditions carefully before participating in the sale of medicines</marquee>
 
         <div class="terms-section">
-            <h2>Eligibility</h2>
+            <h2>Eligibility for Sale</h2>
             <p>
-                <strong>Requirements:</strong> Chemist should have proper licensing, and medicines should not be expired. Medicines should have at least 2 months of usage remaining.
+                <strong>Licensing Requirements:</strong> All chemists must possess valid licenses to sell medicines. Sellers must ensure that their licenses are up-to-date and comply with local regulations.
                 <br><br>
-                <strong>Health and Medication Condition:</strong> Shops should be sanitized properly. Medicines must be in their original packaging, within expiration dates, and stored correctly to ensure their safety and efficacy.
+                <strong>Quality Assurance:</strong> Medicines listed for sale must be stored correctly, in their original packaging, and have at least 2 months before the expiration date.
                 <br><br>
-                <strong>Medicine Safety:</strong> All donated medicines should adhere to local safety and quality standards as specified by health authorities.
+                <strong>Compliance:</strong> All sales must comply with regional and national healthcare guidelines to ensure consumer safety.
             </p>
         </div>
 
         <div class="terms-section">
             <h2>Terms and Conditions</h2>
             <p>
-                By accepting these Terms and Conditions, you confirm that you understand and agree to the specified terms. Please read carefully, as this document outlines your rights and obligations.
+                By accepting these Terms and Conditions, you confirm that you understand and agree to the following points related to the sale of medicines on the MedShare platform.
                 <br><br>
-                1. <strong>Eligibility:</strong> Donors must meet the eligibility criteria set by MedChain.
+                1. <strong>Verification:</strong> All sellers must undergo an initial verification process to confirm their credentials and eligibility.
                 <br><br>
-                2. <strong>Medicine Safety:</strong> Donated medicines must be safe for use, unopened, and within the expiration date as per local health authority guidelines.
+                2. <strong>Product Integrity:</strong> Sellers must ensure that all medicines are authentic, unexpired, and properly labeled.
                 <br><br>
-                3. <strong>Voluntary Donation:</strong> Medicine donation is entirely voluntary, and donors should not be compensated or coerced into donating.
+                3. <strong>Responsibility:</strong> Sellers are responsible for maintaining the quality and safety of the medicines up to the point of handover.
                 <br><br>
-                4. <strong>Confidentiality:</strong> Donor personal information will be kept confidential and used only for purposes related to the donation process.
+                4. <strong>Confidentiality:</strong> Any personal or business information shared will be kept confidential and only used for facilitating transactions on the platform.
                 <br><br>
-                5. <strong>Donor Rights:</strong> Donors have the right to ask questions, receive information about the donation process, and expect respectful treatment from staff.
+                5. <strong>Fair Pricing:</strong> Prices should reflect fair market value, and price gouging is strictly prohibited.
                 <br><br>
-                6. <strong>Record Keeping:</strong> MedChain will maintain accurate records of all donations, including donor information and medicine details.
+                6. <strong>Record Keeping:</strong> MedShare will maintain detailed records of transactions for legal and quality assurance purposes.
                 <br><br>
-                7. <strong>Quality Control:</strong> MedChain reserves the right to inspect and approve all donated medicine items to ensure they meet quality and safety standards.
+                7. <strong>Quality Inspection:</strong> MedShare reserves the right to inspect and approve all listed medicines to ensure they meet safety and quality standards.
                 <br><br>
-                8. <strong>Non-Discrimination:</strong> MedChain does not discriminate against donors based on race, religion, gender, or any other personal characteristics.
+                8. <strong>Non-Discrimination:</strong> The platform does not discriminate based on the chemist’s location, size of business, or other personal characteristics.
                 <br><br>
-                9. <strong>Donation Disposal:</strong> MedChain may dispose of donated medicines that do not meet safety, quality, or storage standards.
+                9. <strong>Return Policy:</strong> Medicines that are damaged or do not meet listed quality standards may be returned, and sellers must honor such returns.
                 <br><br>
-                10. <strong>Liability Waiver:</strong> MedChain is not liable for any adverse effects resulting from the donation or usage of donated medicine items.
+                10. <strong>Liability Waiver:</strong> MedShare is not liable for any disputes or adverse effects arising from the sale or purchase of medicines.
                 <br><br>
-                11. <strong>Cooperation with Authorities:</strong> MedChain will cooperate with relevant authorities in cases involving medicine safety or public health concerns.
+                11. <strong>Dispute Resolution:</strong> Any disputes between chemists must be resolved in accordance with the MedShare platform's dispute resolution guidelines.
                 <br><br>
-                12. <strong>Feedback and Complaints:</strong> Donors are encouraged to provide feedback or report any issues or complaints regarding the donation process.
+                12. <strong>Feedback:</strong> Chemists are encouraged to provide feedback or report any issues regarding their experience on the platform.
             </p>
         </div>
 
-        <form action="medicinedonateform.jsp" method="post">
+        <form action="salesform.jsp" method="post">
             <input type="checkbox" name="terms" value="agree" required> I have read and agreed to the terms and conditions
             <br><br>
-            <input type="submit" class="button button-blue" value="Accept Terms and Conditions">
-            <button type="button" class="button button-green" onclick="location.href='dashboard.jsp'">Back to Home</button>
+            <input type="submit" class="button" value="Accept Terms and Conditions">
+            <button type="button" class="button" onclick="location.href='dashboard.jsp'">Back to Home</button>
         </form>
     </div>
 </body>
 </html>
+
