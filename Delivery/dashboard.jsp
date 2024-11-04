@@ -1,19 +1,12 @@
 <%@ page import="java.sql.*" %>
 <%
-
-// Retrieve the session
 HttpSession session1 = request.getSession(false);
-// Get the name from the session
 String name = (session1 != null) ? (String) session.getAttribute("name") : null;
-
-// Check if the user is logged in
 if (name == null) {
-    // If there is no session, redirect to the login page
     response.sendRedirect("login.jsp");
     return;
 }
 %>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,28 +22,28 @@ if (name == null) {
         }
 
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #FAEBD7; /* Antique White */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4; /* Light gray for contrast */
             color: #333;
         }
 
         header {
             position: relative;
+            background: linear-gradient(to bottom, #333, #555);
+            padding: 15px 0;
             text-align: center;
+            color: #fff;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #333;
             padding: 10px 20px;
         }
 
         .logo {
-            color: #fff;
-            font-size: 24px;
+            font-size: 30px;
             font-weight: bold;
         }
 
@@ -66,47 +59,116 @@ if (name == null) {
         .nav-links a {
             color: #fff;
             text-decoration: none;
+            font-size: 18px;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: #ffdd57; /* Hover effect color */
+            color: #ffdd57;
         }
 
-        .header-image img {
-            width: 100%;
-            height: auto;
+        .hero {
+            background: url('delivery-hero.jpg') no-repeat center center/cover;
+            height: 400px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 20px;
         }
 
         main {
-            padding: 20px;
-            max-width: 800px;
+            padding: 40px 20px;
+            max-width: 1000px;
             margin: auto;
         }
 
         section {
-            margin: 20px 0;
+            margin-bottom: 30px;
             padding: 20px;
             background: #fff;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .card {
+            display: flex;
+            gap: 15px;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .card-item {
+            flex: 1;
+            min-width: 280px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #fafafa;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            font-size: 40px;
+            color: #ffdd57;
+            margin-bottom: 10px;
         }
 
         footer {
             text-align: center;
-            padding: 10px 0;
+            padding: 15px 0;
             background: #333;
             color: #fff;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            font-size: 14px;
         }
 
-        .section-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
+        /* Testimonial section */
+        .testimonials {
+            padding: 20px;
+            text-align: center;
         }
+
+        .testimonial-item {
+            background: #e3f2fd;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
@@ -114,66 +176,58 @@ if (name == null) {
         <nav>
             <div class="logo">Delivery Dashboard</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="dashboard.jsp">Home</a></li>
                 <li><a href="yourOrders.jsp">Your Orders</a></li>
-                <li><a href="past.jsp">Past Orders</a></li>
+                <li><a href="past.jsp">Orders Delivered</a></li>
                 <li><a href="thankYou.jsp">Logout</a></li>
-                
             </ul>
         </nav>
     </header>
-    
-    <main>
-        <section id="home">
-            <h1>Welcome, <%= name %></h1> <!-- Display the delivery person's name here -->
-            <p>Your journey begins here. Check your pending deliveries and manage your orders!</p>
-        </section>
 
-        <section id="about">
-    <h2>About Us</h2>
-    <p>At our delivery service, we are dedicated to ensuring that essential medicines reach chemist shops within 24 hours. We understand the critical role that timely access to medications plays in the healthcare of communities.</p>
-    <p>Our mission is to streamline the supply chain for local chemists, enabling them to serve their customers effectively and efficiently. We partner with trusted suppliers to guarantee that a wide range of medicines is readily available for prompt delivery.</p>
-    <p>Our experienced team and advanced logistics ensure that all orders are processed swiftly, with real-time tracking and updates for both chemists and delivery personnel. We are committed to reliability, efficiency, and excellence in service, making healthcare more accessible for everyone.</p>
-</section>
+    <div class="hero" style="background-color: #FAEBD7; text-align: center; padding: 50px 20px;">
+    <div style="display: inline-block; padding: 20px; background-color: #F0FFF0; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h1 style="font-size: 2.5rem; color: #2E8B57; margin-bottom: 15px;">Welcome, <%= name %></h1>
+        <p style="font-size: 1.25rem; color: #556B2F;">Your journey as a trusted delivery partner begins now. Delivering essential medicines efficiently and promptly.</p>
+    </div>
+</div>
 
-        <section id="services">
-    <h2>Delivery Services</h2>
-    <p>Our delivery service is designed to meet the unique needs of chemist shops, ensuring that essential medicines are delivered swiftly and efficiently. We offer a range of services to enhance your delivery experience:</p>
-    
-    <ul>
-        <li><strong>24-Hour Delivery:</strong> We guarantee that all orders placed before the cut-off time will be delivered within 24 hours, ensuring your shop is always stocked with the medications your customers need.</li>
-        
-        <li><strong>Real-Time Tracking:</strong> Our advanced tracking system allows you to monitor your orders in real-time, providing transparency and peace of mind throughout the delivery process.</li>
-        
-        <li><strong>Flexible Delivery Options:</strong> Choose from various delivery time slots that best fit your shop's schedule, including same-day delivery for urgent requests.</li>
-        
-        <li><strong>Secure Handling:</strong> All medications are handled with the utmost care and delivered in compliance with safety regulations, ensuring that they arrive in perfect condition.</li>
-        
-        <li><strong>Dedicated Support:</strong> Our customer support team is available 24/7 to assist with any queries or issues you may encounter during the delivery process.</li>
-    </ul>
+<main style="padding: 30px 20px; max-width: 1200px; margin: auto;">
+    <section id="highlights" style="margin-bottom: 30px; text-align: center;">
+        <h2 style="font-size: 2rem; color: #2F4F4F; margin-bottom: 20px;">Why Choose Our Service</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+            <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); flex: 1; max-width: 300px;">
+                <h3 style="color: #2E8B57; margin-bottom: 10px;">Reliable Delivery</h3>
+                <p style="color: #333;">Ensuring timely delivery within 24 hours for urgent medical needs.</p>
+            </div>
+          
+            <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); flex: 1; max-width: 300px;">
+                <h3 style="color: #2E8B57; margin-bottom: 10px;">24/7 Support</h3>
+                <p style="color: #333;">Our support team is always ready to assist you with any inquiries.</p>
+            </div>
+        </div>
+    </section>
 
-    <p>With our commitment to reliability and service excellence, we strive to be the go-to delivery partner for chemist shops, helping you provide the best care for your customers.</p>
-</section>
+    <section id="testimonials" style="margin-bottom: 30px;">
+        <h2 style="font-size: 2rem; color: #2F4F4F; text-align: center; margin-bottom: 20px;">What Our Partners Say</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+            <blockquote style="background: #FAEBD7; padding: 20px; border-radius: 12px; font-style: italic; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); max-width: 400px;">
+                <p>"Delivering with this service has transformed how we operate. Fast and reliable!"</p>
+               
+            </blockquote>
+            <blockquote style="background: #FAEBD7; padding: 20px; border-radius: 12px; font-style: italic; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); max-width: 400px;">
+                <p>"The real-time tracking feature provides great peace of mind during deliveries."</p>
+           
+            </blockquote>
+        </div>
+    </section>
 
+    <section id="cta" style="text-align: center; background: #2E8B57; padding: 40px; border-radius: 12px; color: #fff;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Join Our Delivery Network</h2>
+        <p style="font-size: 1.25rem;">Experience seamless and efficient deliveries. Be a part of a service that ensures the health and well-being of communities.</p>
+        <a href="yourOrders.jsp" style="display: inline-block; margin-top: 20px; background: #FFDD57; padding: 10px 20px; border-radius: 8px; color: #333; text-decoration: none; font-weight: bold;">Your Orders</a>
+    </section>
+</main>
 
-        <section id="contact">
-    <h2>Contact Us</h2>
-    <p>We value your feedback and are here to assist you with any questions or concerns you may have. Our dedicated support team is ready to help you!</p>
-    
-    <h3>Get in Touch</h3>
-    <p>For inquiries or assistance, please use one of the following methods:</p>
-    
-    <ul>
-        <li><strong>Email:</strong> <a href="mailto:demo@gmail.com.com"> queries@medchain.in</a> - Reach out to us for any queries or support requests.</li>
-        <li><strong>Phone:</strong> +91 3464328750 - Call our support team for immediate assistance.</li>
-        <li><strong>Live Chat:</strong> Visit our website to use our live chat feature for quick answers to your questions.</li>
-        <li><strong>Office Hours:</strong> Monday to Friday, 9 AM to 5 PM - We're available during these hours to take your calls and respond to emails.</li>
-    </ul>
-
-    <p>We are committed to providing you with the best possible service. Your satisfaction is our priority, and we look forward to assisting you!</p>
-</section>
-        
-    </main>
 
     <footer>
         <p>&copy; 2024 Delivery Service. All rights reserved.</p>
