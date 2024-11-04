@@ -109,7 +109,10 @@ if (name == null) {
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="order.jsp">Order Now</a></li>
+                  <li><a href="tot.jsp">Orders</a></li>
                 <li><a href="past.jsp">Past Orders</a></li>
+                  <li><a href="pen.jsp"> Pending Orders</a></li>
+               
                 <li><a href="contact.jsp">Profile</a></li>
             </ul>
         </nav>
@@ -156,4 +159,3 @@ if (name == null) {
     </footer>
 </body>
 </html>
-
