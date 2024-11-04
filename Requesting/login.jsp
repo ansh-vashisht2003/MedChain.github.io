@@ -53,7 +53,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Requesting Chemist Login</title>
+    <title>Supplying Chemist Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -109,7 +109,7 @@
     </style>
 </head>
 <body>
-    <h1>Requesting Chemist Login</h1>
+    <h1>Supplying Chemist Login</h1>
     <form action="login.jsp" method="post">
         <input type="text" name="username" placeholder="Username" required>
         <input type="password" name="password" placeholder="Password" required>
