@@ -1,3 +1,4 @@
+
 CREATE DATABASE Medicine;
 
 USE Medicine;
@@ -61,9 +62,14 @@ CREATE TABLE hidden_orders (
 );
 
 
-
-
+drop table supplying_chemist;
+drop table requesting_chemist;
+drop table delivery_person;
+drop table hidden_orders;
 DROP TABLE orders;
+
+
+select * from hidden_orders;
 select * from orders;
 select * from delivery_person;
 select * from requesting_chemist;
