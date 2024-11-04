@@ -2,12 +2,22 @@
 <%@ page import="javax.servlet.http.*" %>
 <%@ page import="javax.servlet.*" %>
 <%
-HttpSession session1 = request.getSession(false);
-String name = (session1 != null) ? (String) session1.getAttribute("name") : null;
-String id1 = (session1 != null) ? String.valueOf(session1.getAttribute("id")) : null;
-String phoneNumber = (session1 != null) ? (String) session1.getAttribute("phone_number") : null;
-int id = Integer.parseInt(id1);
-if (name == null) {
+HttpSession session11 = request.getSession(false);
+if (session11 == null || session11.getAttribute("name") == null) {
+    response.sendRedirect("login.jsp");
+    return;
+}
+
+// Retrieve session attributes safely
+String name = (String) session11.getAttribute("name");
+String id1 = String.valueOf(session11.getAttribute("id"));
+String phoneNumber = (String) session11.getAttribute("phone_number");
+
+// Ensure the ID is parsed only if it's valid
+int id = -1;
+try {
+    id = Integer.parseInt(id1);
+} catch (NumberFormatException e) {
     response.sendRedirect("login.jsp");
     return;
 }
@@ -35,7 +45,7 @@ try {
             // Update order status to Accepted
             String updateSql = "UPDATE orders SET status = 'Accepted', supplying_chemist_id = ?, supplying_chemist_name = ?, supplying_chemist_phone = ? WHERE order_id = ?";
             ps = conn.prepareStatement(updateSql);
-            ps.setInt(1, id); // Assuming userId is supplying chemist ID
+            ps.setInt(1, id);
             ps.setString(2, name);
             ps.setString(3, phoneNumber);
             ps.setInt(4, orderId);
@@ -48,6 +58,9 @@ try {
             ps.setInt(2, orderId);
             ps.executeUpdate();
         }
+        // Redirect to refresh the page and reflect changes
+        response.sendRedirect("salesform.jsp");
+        return;
     }
 
     // Query to get pending orders excluding those hidden by the user
@@ -68,57 +81,47 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sales Form</title>
     <style>
-        /* Styles for the page */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Add your CSS styles */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #E8F0F2; /* Light cyan background */
-            color: #2C3E50; /* Dark gray text color */
+            font-family: 'Roboto', sans-serif;
+            background: #F0F4F8;
+            color: #333;
+            margin: 0;
         }
-
         header {
-            position: relative;
+            background: linear-gradient(90deg, #2D6A4F, #52B788);
+            padding: 15px;
+            color: #FFF;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
         nav {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #34495E; /* Dark blue-gray for navbar */
-            padding: 10px 20px;
+            justify-content: space-around;
+            background: #74C69D;
+            padding: 10px 0;
         }
-
-        .logo {
-            color: #F4D03F; /* Gold logo color */
-            font-size: 24px;
-            font-weight: bold;
-        }
-
         .nav-links {
             list-style: none;
             display: flex;
+            gap: 20px;
         }
-
         .nav-links li {
-            margin: 0 15px;
+            display: inline;
         }
-
         .nav-links a {
-            color: #F4F6F6; /* Light white text */
+            color: #FFF;
             text-decoration: none;
-            transition: color 0.3s;
+            font-weight: 500;
+            padding: 8px 15px;
+            background: #2D6A4F;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.2s;
         }
-
         .nav-links a:hover {
-            color: #85C1E9; /* Light blue hover effect */
+            background: #52B788;
+            transform: scale(1.05);
         }
-
         h2 {
             color: #1e88e5;
             margin-bottom: 20px;
@@ -182,18 +185,19 @@ try {
     </style>
 </head>
 <body>
-<header>
-        <nav>
-            <div class="logo">Requesting Dashboard</div>
-            <ul class="nav-links">
-                <li><a href="dashbaord.jsp">Home</a></li>
-                <li><a href="order.jsp">Order Now</a></li>
-                <li><a href="past.jsp">Past Orders</a></li>
-                 <li><a href="tot.jsp">Orders</a></li>
-                <li><a href="contact.jsp">Profile</a></li>
-            </ul>
-        </nav>
+    <header>
+        <h1>Welcome to the Platform, <%= name %>!</h1>
     </header>
+    
+    <nav>
+        <ul class="nav-links">
+            <li><a href="dashboard.jsp">Overview</a></li>
+            <li><a href="order.jsp">Order Requests</a></li>
+            <li><a href="supplyHistory.jsp">Supply History</a></li>
+            <li><a href="profile.jsp">Profile</a></li>
+        </ul>
+    </nav>
+    <center>
     <h2>Pending Orders</h2>
     <table>
         <thead>
@@ -227,8 +231,8 @@ try {
                 <td><%= price %></td>
                 <td><%= quantity %></td>
                 <td class="action-buttons">
-                    <a href="?action=accept&orderId=<%= orderId %>" class="accept">✔</a>
-                    <a href="?action=remove&orderId=<%= orderId %>" class="remove">✖</a>
+                    <a href="?action=accept&orderId=<%= orderId %>" class="accept">Accept</a>
+                    <a href="?action=remove&orderId=<%= orderId %>" class="remove">Reject</a>
                 </td>
             </tr>
             <%
@@ -239,6 +243,7 @@ try {
             %>
         </tbody>
     </table>
+    </center>
 <%
 } catch (Exception e) {
     e.printStackTrace();
