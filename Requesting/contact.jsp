@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Details</title>
     <style>
-        * {
+           * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -140,9 +140,12 @@
         <nav>
             <div class="logo">Requesting Dashboard</div>
             <ul class="nav-links">
-                <li><a href="dashboard.jsp">Home</a></li>
+              <li><a href="dashboard.jsp">Home</a></li>
                 <li><a href="order.jsp">Order Now</a></li>
+                  <li><a href="tot.jsp">Orders</a></li>
                 <li><a href="past.jsp">Past Orders</a></li>
+                  <li><a href="pen.jsp"> Pending Orders</a></li>
+               
                 <li><a href="contact.jsp">Profile</a></li>
             </ul>
         </nav>
@@ -164,3 +167,4 @@
     </footer>
 </body>
 </html>
+
