@@ -1,7 +1,7 @@
 <%@ page import="java.sql.*" %>
 <%
-HttpSession session1 = request.getSession(false);
-String name = (session1 != null) ? (String) session.getAttribute("name") : null;
+HttpSession session11 = request.getSession(false);
+String name = (session11 != null) ? (String) session.getAttribute("name") : null;
 
 if (name == null) {
     response.sendRedirect("login.jsp");
@@ -191,4 +191,3 @@ if (name == null) {
     </footer>
 </body>
 </html>
-
