@@ -1,13 +1,13 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%
-    HttpSession session1 = request.getSession(false);
-    String name = (session1 != null) ? (String) session1.getAttribute("name") : null;
-    String id = (session1 != null) ? String.valueOf(session1.getAttribute("id")) : null;
-    String username = (session1 != null) ? (String) session1.getAttribute("username") : null;
-    String password = (session1 != null) ? (String) session1.getAttribute("password") : null;
-    String phoneNumber = (session1 != null) ? (String) session1.getAttribute("phone_number") : null;
-    String email = (session1 != null) ? (String) session1.getAttribute("email") : null;
+    HttpSession session11 = request.getSession(false);
+    String name = (session11 != null) ? (String) session11.getAttribute("name") : null;
+    String id = (session11 != null) ? String.valueOf(session11.getAttribute("id")) : null;
+    String username = (session11 != null) ? (String) session11.getAttribute("username") : null;
+    String password = (session11 != null) ? (String) session11.getAttribute("password") : null;
+    String phoneNumber = (session11 != null) ? (String) session11.getAttribute("phone_number") : null;
+    String email = (session11 != null) ? (String) session11.getAttribute("email") : null;
 
     if (name == null) {
         response.sendRedirect("login.jsp");
